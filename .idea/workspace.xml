@@ -1,0 +1,193 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="84c2f34c-b175-4906-b518-805ad0ade99a" name="Changes" comment="JsonParser Csv 변환 및 다운로드 기능 추가  [sy.namgoong]&#10;&#10;1. CSV 변환 및 다운로드 기능 추가작업 완료">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/site.webmanifest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stactic/css/normalize.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stactic/js/plugins.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/stactic/js/vendor/modernizr-3.11.2.min.js" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JavaScript File" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <favorite-branches>
+      <branch-storage>
+        <map>
+          <entry type="REMOTE">
+            <value>
+              <list>
+                <branch-info repo="$PROJECT_DIR$" source="origin/feature/home" />
+              </list>
+            </value>
+          </entry>
+        </map>
+      </branch-storage>
+    </favorite-branches>
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="feature/jsonParse" />
+      </map>
+    </option>
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="GitSEFilterConfiguration">
+    <file-type-list>
+      <filtered-out-file-type name="LOCAL_BRANCH" />
+      <filtered-out-file-type name="REMOTE_BRANCH" />
+      <filtered-out-file-type name="TAG" />
+      <filtered-out-file-type name="COMMIT_BY_MESSAGE" />
+    </file-type-list>
+  </component>
+  <component name="ProjectId" id="2M3007XU3JbGyuCipb4lEeeDYm8" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/feature" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/feature" />
+      <recent name="$PROJECT_DIR$" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/stactic" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="84c2f34c-b175-4906-b518-805ad0ade99a" name="Changes" comment="" />
+      <created>1676980743348</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1676980743348</updated>
+      <workItem from="1676980745334" duration="4956000" />
+      <workItem from="1677467282644" duration="40425000" />
+    </task>
+    <task id="LOCAL-00001" summary="initial commit">
+      <created>1676982544179</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1676982544179</updated>
+    </task>
+    <task id="LOCAL-00002" summary="README 내용 수정 [sy.namgoong]&#10;&#10;1.제목 , 개요 , 기술스택 1차작성">
+      <created>1677479653710</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1677479653710</updated>
+    </task>
+    <task id="LOCAL-00003" summary="pull request test index.html 구조 작성 [sy.namgoong]&#10;&#10;1.index.html 구조 작성">
+      <created>1677481954516</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1677481954516</updated>
+    </task>
+    <task id="LOCAL-00004" summary="pull request test README구조 수정[sy.namgoong]&#10;&#10;1.new Branch 생성&#10;2.README 구조 수정">
+      <created>1677484027713</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1677484027713</updated>
+    </task>
+    <task id="LOCAL-00005" summary="1차 main page 디자인 및 nevbar 제작  [sy.namgoong]&#10;&#10;1. mainpage css 커밋&#10;&#10;2. navbar 제작및 모바일 토글버튼 기능 추가">
+      <created>1677485146128</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1677485146128</updated>
+    </task>
+    <task id="LOCAL-00006" summary="JsonParser 기능 추가  [sy.namgoong]&#10;&#10;1. Json 오브젝트 문자열 변환 및 파싱 기능 추가 &#10;&#10;2. Json 클리어 추가 및 Json To Csv 형식 변환 메서드 추가  &#10;&#10;3. 기존 소스 eof end of file 주석 추가">
+      <created>1677828414739</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1677828414739</updated>
+    </task>
+    <task id="LOCAL-00007" summary="JsonParser Csv 변환 및 다운로드 기능 추가  [sy.namgoong]&#10;&#10;1. CSV 변환 및 다운로드 기능 추가작업 완료">
+      <created>1677836121054</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1677836121054</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="feature/home" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="RECENT_FILTERS">
+      <map>
+        <entry key="Branch">
+          <value>
+            <list>
+              <RecentGroup>
+                <option name="FILTER_VALUES">
+                  <option value="origin/feature/home" />
+                </option>
+              </RecentGroup>
+            </list>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="initial commit" />
+    <MESSAGE value="README 내용 수정 [sy.namgoong]&#10;&#10;1.제목 , 개요 , 기술스택 1차작성" />
+    <MESSAGE value="pull request test index.html 구조 작성 [sy.namgoong]&#10;&#10;1.index.html 구조 작성" />
+    <MESSAGE value="pull request test README구조 수정[sy.namgoong]&#10;&#10;1.new Branch 생성&#10;2.README 구조 수정" />
+    <MESSAGE value="1차 main page 디자인 및 nevbar 제작  [sy.namgoong]&#10;&#10;1. mainpage css 커밋&#10;&#10;2. navbar 제작및 모바일 토글버튼 기능 추가" />
+    <MESSAGE value="JsonParser 기능 추가  [sy.namgoong]&#10;&#10;1. Json 오브젝트 문자열 변환 및 파싱 기능 추가 &#10;&#10;2. Json 클리어 추가 및 Json To Csv 형식 변환 메서드 추가  &#10;&#10;3. 기존 소스 eof end of file 주석 추가" />
+    <MESSAGE value="JsonParser Csv 변환 및 다운로드 기능 추가  [sy.namgoong]&#10;&#10;1. CSV 변환 및 다운로드 기능 추가작업 완료" />
+    <option name="LAST_COMMIT_MESSAGE" value="JsonParser Csv 변환 및 다운로드 기능 추가  [sy.namgoong]&#10;&#10;1. CSV 변환 및 다운로드 기능 추가작업 완료" />
+  </component>
+</project>
