@@ -1,6 +1,14 @@
 .btn {
     margin-left :10px;
 }
+.btn a{
+    text-decoration: none;
+
+}
+h3 {
+    color: white;
+}
+
 
 /*navbar Start */
 .navbar {
@@ -70,9 +78,8 @@
 
 .header__banner {
     width: 100%;
-    height: 55vh;/*50vh; */
+    height: 55vh;
     background-color: black;
-    /*background: linear-gradient(rgba(0,0,0,0.5) ,rgba(0,0,0,0.5)),url(/img/INFINITEFREN_NFT_banner.jpeg);*/
 }
 /*navbar End */
 
