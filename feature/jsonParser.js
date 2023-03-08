@@ -19,7 +19,7 @@ let jsonDataBackup ;
 {"id":2,"first_name":"Hyman","last_name":"Steely","email":"hsteely1@columbia.edu","gender":"Male"},
 {"id":3,"first_name":"Mommy","last_name":"Ghirardi","email":"mghirardi2@rambler.ru","gender":"Female"},
 {"id":4,"first_name":"Darnall","last_name":"Earry","email":"dearry3@irs.gov","gender":"Male"},
-{"id":5,"first_name":"Lionello","last_name":"Le Franc","email":"llefranc4@home.pl","gender":"Male"},
+{"id":5,"first_name":"Lionelloㄷ,"last_name":"Le Franc","email":"llefranc4@home.pl","gender":"Male"},
 {"id":6,"first_name":"Chastity","last_name":"Egle","email":"cegle5@linkedin.com","gender":"Female"},
 {"id":7,"first_name":"Moe","last_name":"Pryde","email":"mpryde6@clickbank.net","gender":"Male"},
 {"id":8,"first_name":"Erminia","last_name":"Brigden","email":"ebrigden7@dedecms.com","gender":"Female"},
@@ -41,10 +41,11 @@ btnParser.addEventListener('click',() => {
 
         btnJsonToCsvFile.removeAttribute("disabled");
     }catch (err){
+        errTracker(err.message);
         let errMsg =textArea.value == ""? "값을 입력해주세요.":"Json형식의 데이터가 아닙니다. 다시 입력해주세요.";
         console.log("[ERROR]  ",err);
         alert("[ERROR]" + errMsg);
-        textArea.value ="";
+        //textArea.value ="";
         textArea.focus();
     }
 
@@ -62,7 +63,56 @@ btnJsonToCsvFile.addEventListener('click',() => {
     createDownLoadLink(csvData); //변환된 데이터 다운로드
 });
 
+/**
+ * errTracker
+ *  ValidationErr :  ','or '}' or ']' Json 데이터의 특정 기호를 누락하였거나 더 넣었을 경우 발생
+ *  UnterminatedErr: 문자열 값의 (" ")  (더블 커테이션) 이 제대로 안닫혀있거나 표기를 안했을떄 발생
+ *  UnexpectedErr : json형식 데이터가 아닌 임의에 다른 데이터를 넣었을떄나 아무런값도 집어넣지 않았을때 발생
+ * */
+function errTracker(errMsg){
 
+    let errType = errMsg.startsWith('Expe')?'ValidationErr':errMsg.startsWith('Unte')?
+                  'UnterminatedErr':errMsg.startsWith('Unex')?
+                    'UnexpectedErr':errMsg;
+
+    switch (errType){
+
+        case "ValidationErr":
+            console.log('ValidatinErr 입니다.');
+            let errIndex = errMsg.slice(-2);
+            findErrPosition(errIndex);
+
+            break;
+        case "UnterminatedErr":
+            console.log('UnterminatedErr 입니다.');
+            break;
+        case "UnexpectedErr":
+            console.log('UnexpectedErr 입니다.');
+            break;
+        default:
+            console.error('[ERROR] ',errMsg);
+
+    }
+//   [{"id":1,"first_name":"Eolanda","last_name":"Druce","email":"edruce0@cbsnews.com","gender":"Female"}]
+    console.log('jsonValidation : ',errMsg);
+    console.log('errType : ',errType);
+
+
+
+}
+
+function findErrPosition(index){
+    console.log('findErrPosition start');
+    // textarea 태그의 값을 가져옵니다.
+    const textareaValue = textArea.value
+    // 스타일 속성을 선택하고 값을 변경합니다.
+    const startIndex = index; // 시작 위치
+    const length = 5; // 변경할 문자열의 길이
+    const targetText = textareaValue.substring(startIndex, startIndex + length);
+    const styledText = "<span style='color:red'>" + targetText + "</span>";
+    const replacedText = textareaValue.substring(0, startIndex) + styledText + textareaValue.substring(startIndex + length);
+    textArea.innerHTML = replacedText;
+}
 
 //임시 다운로드 링크 생성 및 클릭 이벤트
 function  createDownLoadLink(data){
