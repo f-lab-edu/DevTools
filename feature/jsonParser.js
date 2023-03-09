@@ -71,8 +71,8 @@ btnJsonToCsvFile.addEventListener('click',() => {
  * */
 function errTracker(errMsg){
 
-    let errType = errMsg.startsWith('Expe')?'ValidationErr':errMsg.startsWith('Unte')?
-                  'UnterminatedErr':errMsg.startsWith('Unex')?
+    let errType = errMsg.startsWith('Expected')?'ValidationErr':errMsg.startsWith('Unterminated')?
+                  'UnterminatedErr':errMsg.startsWith('Unexpected')?
                     'UnexpectedErr':errMsg;
 
     switch (errType){
