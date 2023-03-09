@@ -15,17 +15,18 @@ let jsonDataBackup ;
 /*
 *
 *
-*[{"id":1,"first_name":"Eolanda","last_name":"Druce","email":"edruce0@cbsnews.com","gender":"Female"},
+[{"id":1,"first_name":"Eolanda","last_name":"Druce","email":"edruce0@cbsnews.com","gender":"Female"},
 {"id":2,"first_name":"Hyman","last_name":"Steely","email":"hsteely1@columbia.edu","gender":"Male"},
 {"id":3,"first_name":"Mommy","last_name":"Ghirardi","email":"mghirardi2@rambler.ru","gender":"Female"},
 {"id":4,"first_name":"Darnall","last_name":"Earry","email":"dearry3@irs.gov","gender":"Male"},
-{"id":5,"first_name":"Lionelloㄷ,"last_name":"Le Franc","email":"llefranc4@home.pl","gender":"Male"},
+{"id":5,"first_name":"Lionello","last_name":"Le Franc","email":"llefranc4@home.pl","gender":"Male"},
 {"id":6,"first_name":"Chastity","last_name":"Egle","email":"cegle5@linkedin.com","gender":"Female"},
 {"id":7,"first_name":"Moe","last_name":"Pryde","email":"mpryde6@clickbank.net","gender":"Male"},
 {"id":8,"first_name":"Erminia","last_name":"Brigden","email":"ebrigden7@dedecms.com","gender":"Female"},
 {"id":9,"first_name":"Ingram","last_name":"Nestoruk","email":"inestoruk8@weibo.com","gender":"Male"},
 {"id":10,"first_name":"Joanie","last_name":"Von Der Empten","email":"jvonderempten9@bloomberg.com","gender":"Female"}]
 
+* [{"id":1,"first_name":"Eolanda","last_name":"Druce","email":"edruce0@cbsnews.com","gender":"Female"}, {"id":2,"first_name":"Hyman","last_name":"Steely","email":"hsteely1@columbia.edu","gender":"Male"}, {"id":3,"first_name":"Mommy","last_name":"Ghirardi","email":"mghirardi2@rambler.ru","gender":"Female"}, {"id":4,"first_name":"Darnall","last_name":"Earry","email":"dearry3@irs.gov","gender":"Male"}, {"id":5,"first_name":"Lionello","last_name":"Le Franc","email":"llefranc4@home.pl","gender":"Male"}, {"id":6,"first_name":"Chastity","last_name":"Egle","email":"cegle5@linkedin.com","gender":"Female"}, {"id":7,"first_name":"Moe","last_name":"Pryde","email":"mpryde6@clickbank.net","gender":"Male"}, {"id":8,"first_name":"Erminia","last_name":"Brigden","email":"ebrigden7@dedecms.com","gender":"Female"}, {"id":9,"first_name":"Ingram","last_name":"Nestoruk","email":"inestoruk8@weibo.com","gender":"Male"}, {"id":10,"first_name":"Joanie","last_name":"Von Der Empten","email":"jvonderempten9@bloomberg.com","gender":"Female"}]
 * *
 * */
 
@@ -34,13 +35,16 @@ let jsonDataBackup ;
 //json parse
 btnParser.addEventListener('click',() => {
     try{
-        let jsonData =JSON.parse(textArea.value); //json Object 로 변환
+        let inputData =unescapeHtml(textArea.innerHTML);// 입력된 값 html 태그 요소 방지작업
+        console.log("inputData : ",inputData);
+        let jsonData =JSON.parse(inputData); //json Object 로 변환
         let jsonDataParse =JSON.stringify(jsonData,null,4); //json Object 로 변환된 값을 문자열로 변환 및 탭 처리
-        textArea.value =jsonDataParse ;
+        textArea.innerHTML =jsonDataParse ;
         jsonDataBackup = jsonData; //파일 변환을 위한 json 데이터 백업
 
         btnJsonToCsvFile.removeAttribute("disabled");
     }catch (err){
+        btnJsonToCsvFile.setAttribute("disabled",true);
         errTracker(err.message);
         let errMsg =textArea.value == ""? "값을 입력해주세요.":"Json형식의 데이터가 아닙니다. 다시 입력해주세요.";
         console.log("[ERROR]  ",err);
@@ -63,6 +67,16 @@ btnJsonToCsvFile.addEventListener('click',() => {
     createDownLoadLink(csvData); //변환된 데이터 다운로드
 });
 
+// 특정 기호들을 html 요소로 인식하는 것을 방지하기위해 unescape 함수
+function unescapeHtml(jsonData) {
+    return jsonData
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'");
+}
+
 /**
  * errTracker
  *  ValidationErr :  ','or '}' or ']' Json 데이터의 특정 기호를 누락하였거나 더 넣었을 경우 발생
@@ -78,8 +92,9 @@ function errTracker(errMsg){
     switch (errType){
 
         case "ValidationErr":
-            console.log('ValidatinErr 입니다.');
             let errIndex = errMsg.slice(-2);
+            console.log("validationERR : errMsg : ",errMsg);
+            console.log('ValidatinErr 입니다.',errIndex);
             findErrPosition(errIndex);
 
             break;
@@ -104,13 +119,21 @@ function errTracker(errMsg){
 function findErrPosition(index){
     console.log('findErrPosition start');
     // textarea 태그의 값을 가져옵니다.
-    const textareaValue = textArea.value
+    // const textareaValue = textArea.innerHTML
+    const textareaValue = unescapeHtml(textArea.innerHTML);
     // 스타일 속성을 선택하고 값을 변경합니다.
-    const startIndex = index; // 시작 위치
-    const length = 5; // 변경할 문자열의 길이
+    const startIndex = Number(index); // 시작 위치
+    const length = Number(3); // 변경할 문자열의 길이
+    console.log('startIndx : ',startIndex);
+    console.log("startIndex + length : ",startIndex + length);
     const targetText = textareaValue.substring(startIndex, startIndex + length);
-    const styledText = "<span style='color:red'>" + targetText + "</span>";
-    const replacedText = textareaValue.substring(0, startIndex) + styledText + textareaValue.substring(startIndex + length);
+
+    const styledText = "<span style='color:red;background-color: yellow'>" + targetText + "</span>";
+    //const replacedText = textareaValue.substring(0, startIndex) + styledText + textareaValue.substring(startIndex + length);
+    const replacedText = textareaValue.substring(0, startIndex) + styledText + textareaValue.substring(startIndex,textareaValue.length);
+    console.log("textareaValue.substring(0, startIndex) ; ", textareaValue.substring(0, startIndex));
+    console.log("targeText : ",targetText);
+    console.log("textareaValue.substring(startIndex + length); : ",textareaValue.substring(startIndex + length));
     textArea.innerHTML = replacedText;
 }
 
@@ -129,10 +152,9 @@ function  createDownLoadLink(data){
 
 //clear
 function clear(){
-    textArea.value = "";
+    textArea.innerHTML = "";
     jsonDataBackup = "";
     btnJsonToCsvFile.setAttribute("disabled",true);
-    btnJsonToXlsFile.setAttribute("disabled",true);
 }
 
 

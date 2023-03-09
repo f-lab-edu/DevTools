@@ -96,7 +96,10 @@ h3 {
 .jp_TextArea{
     height: 75vh;
     width: 100%;
+    background-color: white;
     white-space: pre;
+    border: 1px solid #dcdcdc;
+    overflow-y: auto;
 }
 
 .jp_btns{
