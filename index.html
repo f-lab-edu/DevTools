@@ -31,11 +31,14 @@
   </nav>
 
   <div class="jsonParser">
-    <textarea class="jsonParser__text">
-
-
-    </textarea>
-
+    <h3>JsonParser</h3>
+    <ul class="jp_btns">
+      <li><button class="btn parser">parser</button></li>
+      <li><button class="btn clear">clear</button></li>
+      <li><button class="btn jsonToCsvFile" disabled="disabled">json To .csv File</button></li>
+    </ul>
+<!--    <textarea  class="jp_TextArea" id="jp_TextArea" placeholder="Copy here the json data" contenteditable="true"></textarea>-->
+    <div class="jp_TextArea" id="jp_TextArea" contenteditable="true"></div>
   </div>
 
   <div class="variableNameGenerator">
@@ -48,6 +51,7 @@
 
 
   <script src="feature/home.js"></script>
+  <script src="feature/jsonParser.js"></script>
   <script src="https://kit.fontawesome.com/418a079b58.js" crossorigin="anonymous"></script>
 
 </body>
