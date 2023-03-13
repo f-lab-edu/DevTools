@@ -45,8 +45,8 @@ btnParser.addEventListener('click',() => {
         btnJsonToCsvFile.removeAttribute("disabled");
     }catch (err){
         btnJsonToCsvFile.setAttribute("disabled",true);
-        errTracker(err.message);
-        let errMsg =textArea.value == ""? "값을 입력해주세요.":"Json형식의 데이터가 아닙니다. 다시 입력해주세요.";
+        let errMsg = errTracker(err.message);
+        //let errMsg =textArea.innerHTML == ""? "값을 입력해주세요.":"Json형식의 데이터가 아닙니다. 다시 입력해주세요.";
         console.log("[ERROR]  ",err);
         alert("[ERROR]" + errMsg);
         //textArea.value ="";
@@ -85,44 +85,51 @@ function unescapeHtml(jsonData) {
  * */
 function errTracker(errMsg){
 
-    let errType = errMsg.startsWith('Expected')?'ValidationErr':errMsg.startsWith('Unterminated')?
+    const errType = errMsg.startsWith('Expected')?'ValidationErr':errMsg.startsWith('Unterminated')?
                   'UnterminatedErr':errMsg.startsWith('Unexpected')?
                     'UnexpectedErr':errMsg;
+    let isNum =val =>!isNaN(val); //문자열 값이 숫자인지 판단
+
+    let errIndex = errMsg.slice(-2);
+        errIndex = isNum(errIndex)? errIndex : "";
+        console.log("errIndx  : ",errIndex);
+    let result;
 
     switch (errType){
 
         case "ValidationErr":
-            let errIndex = errMsg.slice(-2);
-            console.log("validationERR : errMsg : ",errMsg);
             console.log('ValidatinErr 입니다.',errIndex);
-            findErrPosition(errIndex);
-
+            result = `[ ${errType} ]  ' , ' or ' } ' or ' ] ' 해당 값을 확인해 주세요.`
             break;
         case "UnterminatedErr":
             console.log('UnterminatedErr 입니다.');
+            result =`[ ${errType} ] 문자열("") 의 값을 확인해주세요`
             break;
         case "UnexpectedErr":
             console.log('UnexpectedErr 입니다.');
+            result=`[ ${errType} ] 잘못된 값입니다. 다시 확인해주세요.`
             break;
         default:
-            console.error('[ERROR] ',errMsg);
+            result ="[관리자에게 문의 해주세요.]"
+            console.error('[ERROR] ',errMsg); //그외 에러 메시지
 
     }
+    if (errIndex != ""){ //errIndx 가 숫자 인 경우만 위치 표시
+        findErrPosition(errIndex);
+    }
 //   [{"id":1,"first_name":"Eolanda","last_name":"Druce","email":"edruce0@cbsnews.com","gender":"Female"}]
-    console.log('jsonValidation : ',errMsg);
-    console.log('errType : ',errType);
 
-
+    return result;
 
 }
-
+//Error 발생 위치 표시 함수
 function findErrPosition(index){
     console.log('findErrPosition start');
     // textarea 태그의 값을 가져옵니다.
     // const textareaValue = textArea.innerHTML
     const textareaValue = unescapeHtml(textArea.innerHTML);
     // 스타일 속성을 선택하고 값을 변경합니다.
-    const startIndex = Number(index); // 시작 위치
+    const startIndex = Number(index); // 시작 위치(에러발생위치)
     const length = Number(3); // 변경할 문자열의 길이
     console.log('startIndx : ',startIndex);
     console.log("startIndex + length : ",startIndex + length);
@@ -158,7 +165,7 @@ function clear(){
 }
 
 
-//jsonToCsv
+//jsonToCsv 파일변환 함수
 function jsonToCSV(jsonData) {
     // 1. json 데이터 취득
     const json_array = jsonData;
